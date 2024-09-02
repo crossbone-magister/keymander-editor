@@ -49,7 +49,7 @@
 			</div>
 		</div>
 	{:else}
-		<p>Keymander not selected...</p>
+		<img src="keymanders/KMBACK.png" alt="keymander back" class="grid-item" />
 	{/if}
 </div>
 
