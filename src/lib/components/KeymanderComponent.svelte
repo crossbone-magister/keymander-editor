@@ -21,18 +21,18 @@
 	{#if keymander !== null}
 		<div class="grid-container">
 			<img
-				src="https://placehold.co/300x420?text={keymander.frontName}"
+				src="keymanders/{keymander.frontImage}.png"
 				alt={keymander.frontName}
 				class="grid-item"
 			/>
 			<img
-				src="https://placehold.co/300x420/gray/black?text={keymander.backName}"
+				src="keymanders/{keymander.backImage}.png"
 				alt={keymander.backName}
 				class="grid-item"
 				class:grid-item-hidden={!backVisible}
 			/>
 			<img
-				src="https://placehold.co/300x420/black/white?text={keymander.token}"
+				src="keymanders/{keymander.tokenImage}.png"
 				alt={keymander.token}
 				class="grid-item"
 				class:grid-item-hidden={!tokenVisible}
@@ -63,6 +63,8 @@
 	.grid-item {
 		grid-column: 1;
 		grid-row: 1;
+		max-width: 300px;
+		max-height: 420px;
 	}
 	.grid-item-hidden {
 		visibility: hidden;
