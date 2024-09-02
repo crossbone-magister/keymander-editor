@@ -4,6 +4,9 @@ export class Keymander {
 	backName: string | null;
 	token: string | null;
 	readonly name: string;
+	readonly frontImage: string;
+	readonly backImage: string;
+	readonly tokenImage: string;
 
 	constructor(
 		id: string,
@@ -16,6 +19,9 @@ export class Keymander {
 		this.backName = backName;
 		this.token = token;
 		this.name = this.backName != null ? `${this.frontName}/${this.backName}` : this.frontName;
+		this.frontImage = this.backName != null ? `${this.id}a` : this.id;
+		this.backImage = `${this.id}b`
+		this.tokenImage = `${this.id}t`
 	}
 
 	canFlip(): boolean {

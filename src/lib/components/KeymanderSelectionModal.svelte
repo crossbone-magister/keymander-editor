@@ -59,19 +59,22 @@
 		</div>
 		{#if selectedKeymander !== undefined}
 			<img
-				src="https://placehold.co/300x420?text={selectedKeymander.frontName}"
+				src="keymanders/{selectedKeymander.frontImage}.png"
 				alt={selectedKeymander.frontName}
+				class="keymander-card"
 			/>
 			{#if selectedKeymander?.canFlip()}
 				<img
-					src="https://placehold.co/300x420/gray/black?text={selectedKeymander.backName}"
+					src="keymanders/{selectedKeymander.backImage}.png"
 					alt={selectedKeymander.backName}
+					class="keymander-card"
 				/>
 			{/if}
 			{#if selectedKeymander?.token !== null && selectedKeymander?.token != undefined}
 				<img
-					src="https://placehold.co/300x420/black/white?text={selectedKeymander.token}"
+					src="keymanders/{selectedKeymander.tokenImage}.png"
 					alt={selectedKeymander.token}
+					class="keymander-card"
 				/>
 			{/if}
 		{/if}
@@ -98,5 +101,9 @@
 
 	.keymander-button:hover {
 		outline: auto;
+	}
+	.keymander-card {
+		max-width: 300px;
+		max-height: 420px;
 	}
 </style>
