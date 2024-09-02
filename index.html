@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="./app/immutable/assets/KeymanderDeck.CbhEcnbv.css" rel="stylesheet">
+		<link href="./app/immutable/assets/Constants.Cm9pGPpO.css" rel="stylesheet">
+		<link href="./app/immutable/assets/2.C3Vf7nNp.css" rel="stylesheet">
+		<link href="./app/immutable/assets/KeymanderDeckComponent.lBb7-TvB.css" rel="stylesheet">
+		<link rel="modulepreload" href="./app/immutable/entry/start.DmUOOUxs.js">
+		<link rel="modulepreload" href="./app/immutable/chunks/entry.DfgjtVzN.js">
+		<link rel="modulepreload" href="./app/immutable/chunks/scheduler.CT1AS_K7.js">
+		<link rel="modulepreload" href="./app/immutable/chunks/index.fIeYvNvS.js">
+		<link rel="modulepreload" href="./app/immutable/entry/app.DHkaKlZn.js">
+		<link rel="modulepreload" href="./app/immutable/chunks/index.DovDKrtB.js">
+		<link rel="modulepreload" href="./app/immutable/nodes/0.CiYLVD3V.js">
+		<link rel="modulepreload" href="./app/immutable/chunks/KeymanderDeck.Ce7h5bZf.js">
+		<link rel="modulepreload" href="./app/immutable/chunks/Constants.70a-bd_1.js">
+		<link rel="modulepreload" href="./app/immutable/nodes/2.9T6dbNbJ.js">
+		<link rel="modulepreload" href="./app/immutable/chunks/KeymanderDeckComponent.Dl6jUYL7.js"><title>Keymander Editor</title><!-- HEAD_svelte-ekvpgx_START --><!-- HEAD_svelte-ekvpgx_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">   <div class="main-container svelte-3kmijn"><div class="login-container svelte-3kmijn"><span class="title svelte-3kmijn" data-svelte-h="svelte-17beay9">Keymander Deck Editor</span> <form class="login-form svelte-3kmijn"><label for="api-key" data-svelte-h="svelte-ka945p">Enter your Decks of Keyforge API Key:</label> <input type="password" name="api-key" id="api-key" required placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"> <button title="Start building now"  class="svelte-1wa3a5z">Start building now ➡️ </button></form> <div class="info svelte-3kmijn" data-svelte-h="svelte-up9snf"><span class="icon svelte-3kmijn">ℹ️</span> <span>Your DoK API Key is required to retrieve your decks from DoK. <br><br>
+				Don&#39;t know what a DoK API Key is and how to generate it? Find more
+				<a href="https://decksofkeyforge.com/about/sellers-and-devs">here</a>.</span></div></div></div> <dialog class="message-dialog svelte-1yc9bl2"> <p class="svelte-1yc9bl2"><div class="dialog-container svelte-3kmijn" data-svelte-h="svelte-n944z7"><label for="loading-progress">Loading your decks...</label> <progress id="loading-progress"></progress></div></p> </dialog> <div style="display: contents; --modal-background-image:linear-gradient(45deg, red, crimson); --modal-opacity:0.75;"><dialog class="message-dialog svelte-1yc9bl2"><p class="svelte-1yc9bl2"><button title="Close"  class="svelte-1wa3a5z">❌ </button></p> <p class="svelte-1yc9bl2"><p data-svelte-h="svelte-152zuxf"><b>ERROR OCCURRED</b></p> <p>You should see a message here. This means something went wrong.</p></p> </dialog></div> 
+			
+			<script>
+				{
+					__sveltekit_8daxm8 = {
+						base: new URL(".", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./app/immutable/entry/start.DmUOOUxs.js"),
+						import("./app/immutable/entry/app.DHkaKlZn.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
