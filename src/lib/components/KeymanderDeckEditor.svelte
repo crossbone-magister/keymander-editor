@@ -53,7 +53,7 @@
 	<IconButton on:click={resetKeymanderDeck} title="Reset Keymander Deck">♻️</IconButton>
 	<ExportButton deck={$keymanderDeck} />
 	<ImportButton />
-	<a href="/full" class="print-button" title="View full screen">🖨️</a>
+	<a href="full" class="print-button" title="View full screen">🖨️</a>
 </div>
 
 <KeymanderDeckComponent
