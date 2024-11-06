@@ -16,7 +16,11 @@
 		Mars: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/Mars_CmAUCXI.png',
 		Saurian: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/Saurian.png',
 		Geistoid: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/KF_Geistoid.png',
-		Unfathomable: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/Unfathomable.png'
+		Unfathomable: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/Unfathomable.png',
+		Skyborn: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/Skyborn.png',
+		Redemption: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/Redemption.png',
+		Elders: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/Elders.png',
+		Rebels: 'https://mastervault-storage-prod.s3.amazonaws.com/media/houses/Rebels.png'
 	};
 </script>
 
