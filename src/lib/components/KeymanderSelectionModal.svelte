@@ -6,12 +6,13 @@
 	let selectedKeymander: Keymander | undefined;
 	let show: boolean = false;
 	let searchString: string = '';
+	let filterVersion: string = 'ALL';
 	$: searchString = searchString.toLowerCase();
 	$: keymanderList = KEYMANDER_LIST.filter(
 		(keymander) =>
 			keymander.name.toLowerCase().includes(searchString) ||
 			keymander.id.toLowerCase().includes(searchString)
-	);
+	).filter((keymander) => filterVersion === 'ALL' || keymander.version === filterVersion);
 	const dispatch = createEventDispatcher();
 
 	function showDetails(keymander: Keymander) {
@@ -40,6 +41,21 @@
 		<div>
 			<label for="search-keymander">Search:</label>
 			<input type="text" id="search-keymander" bind:value={searchString} />
+			<div>
+				<span>Version:</span>
+				<label for="radio-all">
+					<input type="radio" bind:group={filterVersion} value="ALL" id="radio-all" />
+					ALL
+				</label>
+				<label for="radio-11">
+					<input type="radio" bind:group={filterVersion} value="1.1" id="radio-11" />
+					1.1
+				</label>
+				<label for="radio-20">
+					<input type="radio" bind:group={filterVersion} value="2.0" id="radio-20" />
+					2.0
+				</label>
+			</div>
 			<ul>
 				{#each keymanderList as keymander (keymander.id)}
 					<li>
@@ -58,25 +74,34 @@
 			</ul>
 		</div>
 		{#if selectedKeymander !== undefined}
-			<img
-				src="keymanders/{selectedKeymander.frontImage}.png"
-				alt={selectedKeymander.frontName}
-				class="keymander-card"
-			/>
-			{#if selectedKeymander?.canFlip()}
+			<div class="grid-images">
 				<img
-					src="keymanders/{selectedKeymander.backImage}.png"
-					alt={selectedKeymander.backName}
+					src="keymanders/{selectedKeymander.frontImage}.png"
+					alt={selectedKeymander.frontName}
 					class="keymander-card"
 				/>
-			{/if}
-			{#if selectedKeymander?.token !== null && selectedKeymander?.token != undefined}
-				<img
-					src="keymanders/{selectedKeymander.tokenImage}.png"
-					alt={selectedKeymander.token}
-					class="keymander-card"
-				/>
-			{/if}
+				{#if selectedKeymander?.canFlip()}
+					<img
+						src="keymanders/{selectedKeymander.backImage}.png"
+						alt={selectedKeymander.backName}
+						class="keymander-card"
+					/>
+				{/if}
+				{#if selectedKeymander?.token !== null && selectedKeymander?.token != undefined}
+					<img
+						src="keymanders/{selectedKeymander.tokenImage}.png"
+						alt={selectedKeymander.token}
+						class="keymander-card"
+					/>
+				{/if}
+				{#each selectedKeymander?.extraCards as extraCard, i (extraCard)}
+					<img
+						src="keymanders/{selectedKeymander?.id}{String.fromCharCode(i + 99)}.png"
+						alt={extraCard}
+						class="keymander-card"
+					/>
+				{/each}
+			</div>
 		{/if}
 	</div>
 </MessageDialog>
@@ -84,10 +109,16 @@
 <style>
 	.grid-container {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		column-gap: 1em;
+		grid-template-columns: 1fr auto;
 		height: 100vh;
 		min-width: 90vw;
+	}
+
+	.grid-images {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		column-gap: 1em;
+		row-gap: 1em;
 	}
 
 	li {
@@ -97,6 +128,7 @@
 	.keymander-button {
 		background: none;
 		border: none;
+		white-space: nowrap;
 	}
 
 	.keymander-button:hover {
