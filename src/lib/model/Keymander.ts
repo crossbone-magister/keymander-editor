@@ -33,6 +33,10 @@ export class Keymander {
 	canFlip(): boolean {
 		return this.backName !== null;
 	}
+
+	hasToken(): boolean {
+		return this.token !== null && this.token != undefined;
+	}
 }
 
 export const KEYMANDER_LIST: Keymander[] = [

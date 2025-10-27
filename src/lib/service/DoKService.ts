@@ -12,8 +12,10 @@ import { Pod } from '$lib/model/Pod';
 class DoKService {
 	baseUrl = 'https://decksofkeyforge.com/public-api/v1';
 
-	async retrieveDecks(apiKey: string): Promise<Deck[]> {
-		return fetch(`${this.baseUrl}/my-decks`, {
+	async retrieveDecks(apiKey: string, page: number = 0): Promise<Deck[]> {
+		const query = new URLSearchParams();
+		query.append('page', page.toString());
+		return fetch(`${this.baseUrl}/my-decks?${query}`, {
 			method: 'GET',
 			headers: {
 				'Api-Key': apiKey
@@ -21,18 +23,21 @@ class DoKService {
 		}).then((response) =>
 			response.json().then((dokResponse: DoKMyDecksResponse | DoKErrorResponse) => {
 				if (response.ok) {
-					var decks: Deck[] = [];
+					const decks: Deck[] = [];
 					(dokResponse as DoKMyDecksResponse).forEach((dokDeckData: DoKDeck) => {
-						let dokDeck = dokDeckData.deck;
+						const dokDeck = dokDeckData.deck;
 						const pods = dokDeck.housesAndCards.map(
 							(dokPod: DoKPod) =>
 								new Pod(
 									`${dokDeck.id}-${dokPod.house}`,
 									dokPod.house,
-									dokPod.cards.map((dokCard: DoKCard) => new Card(dokCard.cardTitle, dokCard.rarity))
+									dokPod.cards.map(
+										(dokCard: DoKCard) =>
+											new Card(dokCard.cardTitle, dokCard.rarity, dokCard.cardTitleUrl)
+									)
 								)
 						);
-						decks.push(new Deck(dokDeck.id, dokDeck.name, pods));
+						decks.push(new Deck(dokDeck.id, dokDeck.name, dokDeck.expansion, pods));
 					});
 					return decks;
 				} else {

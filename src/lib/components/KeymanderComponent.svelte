@@ -1,78 +1,59 @@
 <script lang="ts">
-	import type { Keymander } from '$lib/model/Keymander';
+	import { Keymander } from '$lib/model/Keymander';
+	import {
+		Carousel,
+		CarouselControl,
+		CarouselIndicators,
+		CarouselItem,
+		Image
+	} from '@sveltestrap/sveltestrap';
 
 	export let keymander: Keymander | null;
 
-	let backVisible: boolean = false;
-	let tokenVisible: boolean = false;
+	let activeIndex: number = 0;
+	$: items = keymanderImages(keymander);
 
-	function showBack() {
-		backVisible = true;
-	}
-	function showToken() {
-		tokenVisible = true;
-	}
-	function hide() {
-		backVisible = tokenVisible = false;
+	function keymanderImages(keymander: Keymander | null) {
+		const list = [];
+		activeIndex = 0;
+		if (keymander !== null) {
+			list.push({ src: `keymanders/${keymander?.frontImage}.png`, alt: keymander?.frontName });
+			if (keymander.canFlip()) {
+				list.push({
+					src: `keymanders/${keymander?.backImage}.png`,
+					alt: keymander?.backName || 'keymanderBackImage'
+				});
+			}
+			if (keymander.hasToken()) {
+				list.push({
+					src: `keymanders/${keymander?.tokenImage}.png`,
+					alt: keymander?.token || 'keymanderTokenImage'
+				});
+			}
+			keymander.extraCards.forEach((card, i) => {
+				list.push({
+					src: `keymanders/${keymander?.id}${String.fromCharCode(i + 99)}.png`,
+					alt: card
+				});
+			});
+		}
+		return list;
 	}
 </script>
 
-<div>
-	{#if keymander !== null}
-		<div class="grid-container">
-			<img
-				src="keymanders/{keymander.frontImage}.png"
-				alt={keymander.frontName}
-				class="grid-item"
-			/>
-			<img
-				src="keymanders/{keymander.backImage}.png"
-				alt={keymander.backName}
-				class="grid-item"
-				class:grid-item-hidden={!backVisible}
-			/>
-			<img
-				src="keymanders/{keymander.tokenImage}.png"
-				alt={keymander.token}
-				class="grid-item"
-				class:grid-item-hidden={!tokenVisible}
-			/>
-			<div class="grid-item hover-grid-container">
-				{#if keymander?.canFlip()}
-					<div on:mouseenter={showBack} on:mouseleave={hide} role="none" title="Show Back">🔄</div>
-				{/if}
-				{#if keymander?.token !== null && keymander?.token != undefined}
-					<div on:mouseenter={showToken} on:mouseleave={hide} role="none" title="Show Token">
-						♟️
-					</div>
-				{/if}
-			</div>
+{#if keymander !== null}
+	<Carousel bind:activeIndex {items} ride={false}>
+		<CarouselIndicators bind:activeIndex {items} />
+		<div class="carousel-inner">
+			{#each items as image, i}
+				<CarouselItem bind:activeIndex itemIndex={i}>
+					<Image fluid src={image.src} alt={image.alt} class="d-block w-100"></Image>
+				</CarouselItem>
+			{/each}
 		</div>
-	{:else}
-		<img src="keymanders/KMBACK.png" alt="keymander back" class="grid-item" />
-	{/if}
-</div>
-
-<style>
-	.grid-container {
-		display: grid;
-		grid-template-columns: 1fr;
-		position: relative;
-		align-content: end;
-	}
-	.grid-item {
-		grid-column: 1;
-		grid-row: 1;
-		max-width: 300px;
-		max-height: 420px;
-	}
-	.grid-item-hidden {
-		visibility: hidden;
-	}
-	.hover-grid-container {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		padding-top: 130%;
-		justify-items: center;
-	}
-</style>
+		<CarouselControl direction="prev" bind:activeIndex {items} />
+		<CarouselControl direction="next" bind:activeIndex {items} />
+	</Carousel>
+{:else}
+	<Image fluid src="keymanders/KMBACK.png" alt="keymander back" />
+{/if}

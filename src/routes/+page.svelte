@@ -1,14 +1,6 @@
 <script lang="ts">
-	import KeymanderDeckEditor from '$lib/components/KeymanderDeckEditor.svelte';
-	import SetupPage from '$lib/components/SetupPage.svelte';
-	import { getContext } from 'svelte';
-	import { type Writable } from 'svelte/store';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
-	const dataLoaded: Writable<boolean> = getContext('dataLoaded');
+	onMount(() => goto('/editor'));
 </script>
-
-{#if $dataLoaded}
-	<KeymanderDeckEditor />
-{:else}
-	<SetupPage />
-{/if}

@@ -29,6 +29,7 @@
 	<span>{house}</span>
 {/if}
 
+<!-- TODO: maybe use bootstap classes? -->
 <style>
 	img {
 		width: var(--width, 2rem);
