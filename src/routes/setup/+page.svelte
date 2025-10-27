@@ -38,7 +38,7 @@
 			apiKeyStore.set(apiKey);
 			decks.set(deckData);
 			dataLoaded.set(true);
-			goto('/');
+			goto('editor');
 		} catch (e) {
 			console.error('Error occurred while importing Decks from DoK', e);
 			errorMessage.set(e);

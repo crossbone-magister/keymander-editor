@@ -25,7 +25,7 @@
 
 	onMount(() => {
 		if (!$dataLoaded) {
-			goto('/setup');
+			goto('setup');
 		}
 	});
 </script>
@@ -42,8 +42,8 @@
 	</NavbarBrand>
 	<Nav class="align-items-center">
 		{#if $dataLoaded}
-			<NavLink href="/editor">Editor</NavLink>
-			<NavLink href="/viewer">Viewer</NavLink>
+			<NavLink href="editor">Editor</NavLink>
+			<NavLink href="viewer">Viewer</NavLink>
 		{/if}
 		<NavLink
 			id="github-link"
