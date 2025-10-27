@@ -2,13 +2,20 @@ import { writable, type Writable } from 'svelte/store';
 import type { Deck } from './model/Deck';
 import { KeymanderDeck } from './model/KeymanderDeck';
 
-function sessionBackedStore<T>(
+const storagePrefix = 'keymandereditor:';
+
+export interface Toggle extends Writable<boolean> {
+	toggle(): void;
+}
+
+export function sessionBackedStore<T>(
 	key: string,
 	initialValue: T,
 	reader: (value: string | null) => T,
 	writer: (value: T) => string
 ): Writable<T> {
-	var storage: Writable<T>;
+	let storage: Writable<T>;
+	key = `${storagePrefix}${key}`;
 	if (typeof window !== 'undefined') {
 		storage = writable(
 			sessionStorage.getItem(key) ? reader(sessionStorage.getItem(key)) : initialValue
@@ -39,7 +46,16 @@ function jsonObjectBackedStore<T>(key: string, initialValue: T) {
 	);
 }
 
+export function toggle(): Toggle {
+	const store = writable(false);
+	return {
+		...store,
+		toggle: () => store.update((value) => !value)
+	};
+}
+
 export const errorMessage: Writable<Error | undefined> = writable(undefined);
+export const isLoading: Toggle = toggle();
 
 export const decks: Writable<Deck[]> = jsonObjectBackedStore('decks', [] as Deck[]);
 
@@ -61,5 +77,12 @@ export const dataLoaded: Writable<boolean> = sessionBackedStore(
 	'dataLoaded',
 	false,
 	(value) => value?.toLocaleLowerCase() === 'true',
+	(value) => String(value)
+);
+
+export const apiKey: Writable<string> = sessionBackedStore(
+	'apiKey',
+	'',
+	(value) => value ?? '',
 	(value) => String(value)
 );

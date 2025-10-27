@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { KeymanderDeck } from '$lib/model/KeymanderDeck';
-	import IconButton from './IconButton.svelte';
+	import { Button, Icon, Tooltip } from '@sveltestrap/sveltestrap';
 
 	export let deck: KeymanderDeck;
 	let downloadLink: HTMLAnchorElement;
@@ -24,7 +24,8 @@
 	}
 </script>
 
-<IconButton on:click={exportDeck} disabled={!deck.isComplete()} title="Export Keymander deck"
-	>💾</IconButton
->
+<Tooltip target="export-button" placement="right">Export deck</Tooltip>
 <a id="download-link" bind:this={downloadLink} hidden>Download</a>
+<Button id="export-button" on:click={exportDeck} disabled={!deck.isComplete()} color="primary">
+	<Icon name="download" />
+</Button>

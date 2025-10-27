@@ -1,50 +1,63 @@
 <script lang="ts">
 	import type { JsonKeymanderDeck } from '$lib/model/import/JsonImport';
 	import { KeymanderDeck } from '$lib/model/KeymanderDeck';
+	import {
+		Button,
+		Form,
+		FormGroup,
+		Icon,
+		Input,
+		InputGroup,
+		Modal,
+		Tooltip
+	} from '@sveltestrap/sveltestrap';
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	import MessageDialog from './MessageDialog.svelte';
-	import IconButton from './IconButton.svelte';
-
-	let jsonData: string;
-	let showModal: boolean = false;
 
 	const keymanderDeck: Writable<KeymanderDeck> = getContext('keymanderDeck');
 	const errorMessage: Writable<Error | undefined> = getContext('errorMessage');
 
-	function importDeck() {
+	let files: FileList;
+	let showModal: boolean = false;
+	let uploader: Input;
+
+	async function loadFileAndImport() {
 		try {
-			const loadedData: JsonKeymanderDeck = JSON.parse(jsonData);
-			const loadedDeck = KeymanderDeck.fromJson(loadedData);
-			keymanderDeck.set(loadedDeck);
-			jsonData = '';
-			showModal = false;
+			if (files.item(0) !== null) {
+				const fileContents = await files.item(0)?.text();
+				if (fileContents != undefined) {
+					importDeck(JSON.parse(fileContents));
+				}
+			}
 		} catch (e) {
-			console.error('Error occurred while importing Keymander deck', e);
 			errorMessage.set(e);
+		} finally {
+			showModal = false;
 		}
+	}
+
+	function importDeck(jsonData: JsonKeymanderDeck) {
+		const loadedDeck = KeymanderDeck.fromJson(jsonData);
+		keymanderDeck.set(loadedDeck);
 	}
 </script>
 
-<IconButton
+<Button
+	id="upload-button"
+	color="primary"
 	on:click={() => {
 		showModal = true;
-	}}
-	title="Import Keymander deck">⬆️</IconButton
+	}}><Icon name="upload" /></Button
 >
+<Tooltip target="upload-button" placement="right">Import deck</Tooltip>
 
-<MessageDialog bind:visible={showModal}>
-	<form on:submit|preventDefault={importDeck} class="grid-container">
-		<label for="json-data">Paste your deck import data:</label>
-		<textarea id="json-data" bind:value={jsonData} rows="25" cols="100" required></textarea>
-		<input type="submit" value="Import" />
-	</form>
-</MessageDialog>
-
-<style>
-	.grid-container {
-		display: grid;
-		grid-template-columns: 1fr;
-		row-gap: 0.1em;
-	}
-</style>
+<Modal isOpen={showModal} header="Import deck" toggle={() => (showModal = !showModal)} body>
+	<Form on:submit={loadFileAndImport}>
+		<FormGroup>
+			<InputGroup>
+				<Input id="toLoad" type="file" required accept=".json" bind:files bind:this={uploader} />
+				<Input id="submit-upload" type="submit" value="Load" color="primary" />
+			</InputGroup>
+		</FormGroup>
+	</Form>
+</Modal>

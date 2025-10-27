@@ -1,7 +1,8 @@
 <script lang="ts">
+	import { Modal, ModalBody } from '@sveltestrap/sveltestrap';
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	import MessageDialog from './MessageDialog.svelte';
+	import IconAlert from './IconAlert.svelte';
 
 	$: showModal = $errorMessage !== undefined;
 	const errorMessage: Writable<Error | undefined> = getContext('errorMessage');
@@ -11,18 +12,12 @@
 	}
 </script>
 
-<MessageDialog
-	visible={showModal}
-	on:close={closeModal}
-	--modal-background-image="linear-gradient(45deg, red, crimson)"
-	--modal-opacity="0.75"
->
-	<p>
-		<b>ERROR OCCURRED</b>
-	</p>
-	<p>
-		{$errorMessage
-			? $errorMessage.message
-			: 'You should see a message here. This means something went wrong.'}
-	</p>
-</MessageDialog>
+<Modal autoFocus centered backdrop header="Error occurred" isOpen={showModal} toggle={closeModal}>
+	<ModalBody>
+		<IconAlert color="danger" iconName="exclamation-octagon-fill">
+			{$errorMessage
+				? $errorMessage.message
+				: 'You should see a message here. This means something went wrong.'}
+		</IconAlert>
+	</ModalBody>
+</Modal>
