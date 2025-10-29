@@ -12,7 +12,8 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"deploy": "gh-pages -d build",
+		"prepare": "husky"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -25,6 +26,7 @@
 		"eslint-plugin-svelte": "^2.36.0",
 		"gh-pages": "^6.3.0",
 		"globals": "^15.0.0",
+		"husky": "^9.1.7",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"svelte": "^4.2.7",
