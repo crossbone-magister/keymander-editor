@@ -49,7 +49,7 @@
 		showModal = true;
 	}}><Icon name="upload" /></Button
 >
-<Tooltip target="upload-button" placement="right">Import deck</Tooltip>
+<Tooltip target="upload-button" placement="top">Import deck</Tooltip>
 
 <Modal isOpen={showModal} header="Import deck" toggle={() => (showModal = !showModal)} body>
 	<Form on:submit={loadFileAndImport}>
