@@ -5,6 +5,7 @@
 	import LoadingDialog from '$lib/components/LoadingDialog.svelte';
 	import { apiKey, dataLoaded, decks, errorMessage, isLoading, keymanderDeck } from '$lib/stores';
 	import {
+		Col,
 		Container,
 		Icon,
 		Nav,
@@ -36,8 +37,10 @@
 <Navbar color="primary-subtle" class="mb-2 sticky-top">
 	<NavbarBrand>
 		<Container>
-			<Row>Keymander Deck Editor</Row>
-			<Row class="fs-6">v{version}</Row>
+			<Row class="align-items-center">
+				<Col xs="auto">Keymander Deck Editor</Col>
+				<Col xs="1" class="fs-6">v{version}</Col>
+			</Row>
 		</Container>
 	</NavbarBrand>
 	<Nav class="align-items-center">

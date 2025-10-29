@@ -70,10 +70,12 @@
 					<KeymanderSelectionModal on:keymanderSelected={setKeymander} />
 					<Button
 						color="primary"
+						id="select-pod-button"
 						on:click={() => {
 							showDecks = true;
-						}}>Select pod...</Button
+						}}>Pods</Button
 					>
+					<Tooltip target="select-pod-button" trigger="hover" placement="right">Select pod</Tooltip>
 				</ButtonGroup>
 				<ButtonGroup size="sm" class="me-2">
 					<Button

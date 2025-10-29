@@ -42,7 +42,7 @@
 	</Row>
 </Container>
 <Container class="sticky-bottom p-1">
-	<Row class="justify-content-end">
+	<Row class="justify-content-end p-4 p-md-0">
 		<Button id="export-screenshot" color="primary" size="xxl" on:click={() => takeScreenshot()}>
 			<Icon name="image-fill" /> Take a screenshot
 		</Button>

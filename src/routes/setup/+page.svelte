@@ -50,8 +50,8 @@
 
 <Container>
 	<Row>
-		<Col xs="4" />
-		<Col xs="4">
+		<Col md="4" />
+		<Col md="4" xs="auto">
 			{#if !$dataLoaded}
 				<Card>
 					<CardHeader><h6>Insert your API Key</h6></CardHeader>
@@ -87,6 +87,6 @@
 				</IconAlert>
 			{/if}
 		</Col>
-		<Col xs="4" />
+		<Col md="4" />
 	</Row>
 </Container>

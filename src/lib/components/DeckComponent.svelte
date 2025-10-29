@@ -32,10 +32,10 @@
 	{/if}
 	<CardBody>
 		<Container>
-			<Row>
+			<Row class="gap-4 gap-md-0">
 				{#each deck.pods as pod (pod.id)}
 					{@const buttonId = `select-pod-${pod.id}`}
-					<Col xs="4">
+					<Col xs="auto" md=4>
 						<HouseIcon house={pod.house} showName={true} --width="2.5rem" --height="2.5rem" />
 						<Button
 							id={buttonId}
