@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint @typescript-eslint/no-unused-vars: "warn" */
 	import { Constants } from '$lib/model/Constants';
 	import type { Pod } from '$lib/model/Pod';
 	import { Button, Col, Container, Icon, Row, Tooltip } from '@sveltestrap/sveltestrap';
@@ -21,7 +22,9 @@
 
 <Container>
 	<Row>
-		<Col xs=12 md=2 class="align-self-center"><KeymanderComponent keymander={deck.keymander} /></Col>
+		<Col xs="12" md="2" class="align-self-center"
+			><KeymanderComponent keymander={deck.keymander} /></Col
+		>
 		<Col xs="12" md="auto">
 			<Container>
 				<Row class="p-2 gap-4">
