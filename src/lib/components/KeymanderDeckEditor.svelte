@@ -75,7 +75,7 @@
 							showDecks = true;
 						}}>Pods</Button
 					>
-					<Tooltip target="select-pod-button" trigger="hover" placement="right">Select pod</Tooltip>
+					<Tooltip target="select-pod-button" trigger="hover" placement="top">Select pod</Tooltip>
 				</ButtonGroup>
 				<ButtonGroup size="sm" class="me-2">
 					<Button
@@ -100,8 +100,8 @@
 					<ExportButton deck={$keymanderDeck} />
 				</ButtonGroup>
 			</ButtonToolbar>
-			<Tooltip target="clear-pods" placement="right">Clear pods</Tooltip>
-			<Tooltip target="reset-deck" placement="right">Reset deck</Tooltip>
+			<Tooltip target="clear-pods" placement="top">Clear pods</Tooltip>
+			<Tooltip target="reset-deck" placement="top">Reset deck</Tooltip>
 		</Col>
 	</Row>
 	<Row>

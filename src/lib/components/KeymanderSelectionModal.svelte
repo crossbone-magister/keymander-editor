@@ -56,9 +56,7 @@
 <Button id="select-keymander-button" color="primary" on:click={() => (show = true)}>
 	Keymanders
 </Button>
-<Tooltip target="select-keymander-button" trigger="hover" placement="right">
-	Select Keymander
-</Tooltip>
+<Tooltip target="select-keymander-button" trigger="hover" placement="top">Select Keymander</Tooltip>
 <Modal
 	size="xl"
 	isOpen={show}

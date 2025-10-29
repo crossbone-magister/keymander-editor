@@ -24,7 +24,7 @@
 	}
 </script>
 
-<Tooltip target="export-button" placement="right">Export deck</Tooltip>
+<Tooltip target="export-button" placement="top">Export deck</Tooltip>
 <a id="download-link" bind:this={downloadLink} hidden>Download</a>
 <Button id="export-button" on:click={exportDeck} disabled={!deck.isComplete()} color="primary">
 	<Icon name="download" />
