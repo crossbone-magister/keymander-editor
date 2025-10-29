@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint @typescript-eslint/no-unused-vars: "warn" */
 	import DeckComponent from '$lib/components/DeckComponent.svelte';
 	import { DeckLoaderHelper } from '$lib/helper/DeckLoaderHelper';
 	import { Constants } from '$lib/model/Constants';

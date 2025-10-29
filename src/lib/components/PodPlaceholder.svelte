@@ -1,4 +1,5 @@
 <script>
+	/* eslint @typescript-eslint/no-unused-vars: "warn" */
 	import { Constants } from '$lib/model/Constants';
 </script>
 

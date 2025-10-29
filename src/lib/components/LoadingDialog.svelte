@@ -7,7 +7,7 @@
 
 <Modal centered autoFocus backdrop body keyboard={false} isOpen={$isLoading}>
 	<Row class="align-items-center">
-		<Col xs=2 md=1><Spinner type="border" color="primary" /></Col>
+		<Col xs="2" md="1"><Spinner type="border" color="primary" /></Col>
 		<Col><div>Loading your decks...</div></Col>
 	</Row>
 </Modal>
