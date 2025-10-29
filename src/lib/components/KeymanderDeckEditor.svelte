@@ -120,10 +120,14 @@
 	</Row>
 </Container>
 
-<Container class="sticky-bottom" style="z-index: 9999;">
-	<Row class="justify-content-center">
-		<Toast autohide delay={3000} isOpen={showToast} on:close={() => (showToast = false)}>
-			<ToastHeader icon="success" toggle={toggleToast}>Pod added</ToastHeader>
-		</Toast>
-	</Row>
-</Container>
+<div class="sticky-bottom z-9999">
+	<Toast autohide delay={1500} theme="dark" isOpen={showToast} on:close={() => (showToast = false)}>
+		<ToastHeader icon="success" toggle={toggleToast}>Pod added</ToastHeader>
+	</Toast>
+</div>
+
+<style>
+	.z-9999 {
+		z-index: 9999;
+	}
+</style>
