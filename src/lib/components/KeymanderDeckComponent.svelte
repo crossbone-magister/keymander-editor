@@ -20,11 +20,11 @@
 </script>
 
 <Container>
-	<Row class="flex-nowrap">
-		<Col xs="2" class="align-self-center"><KeymanderComponent keymander={deck.keymander} /></Col>
-		<Col>
+	<Row>
+		<Col xs=12 md=2 class="align-self-center"><KeymanderComponent keymander={deck.keymander} /></Col>
+		<Col xs="12" md="auto">
 			<Container>
-				<Row class="p-2">
+				<Row class="p-2 gap-4">
 					{#each deck.pods
 						.sort((a, b) => a.house.localeCompare(b.house))
 						.slice(0, Constants.MAX_POD_PER_DECK / 2) as pod (pod.id)}
@@ -66,7 +66,7 @@
 						{/if}
 					{/each}
 				</Row>
-				<Row class="p-2">
+				<Row class="p-2 gap-4">
 					{#each deck.pods
 						.sort((a, b) => a.house.localeCompare(b.house))
 						.slice(Constants.MAX_POD_PER_DECK / 2, Constants.MAX_POD_PER_DECK) as pod (pod.id)}

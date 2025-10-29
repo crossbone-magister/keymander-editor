@@ -53,7 +53,8 @@
 	}
 </script>
 
-<Button color="primary" on:click={() => (show = true)}>Select Keymander...</Button>
+<Button id="select-keymander-button" color="primary" on:click={() => (show = true)}>Keymanders</Button>
+<Tooltip target="select-keymander-button" trigger="hover" placement="right">Select Keymander</Tooltip>
 <Modal
 	size="xl"
 	isOpen={show}
@@ -115,7 +116,7 @@
 				</Collapse>
 			</Row>
 			<Row class="p-1">
-				<Col xs="6" class="overflow-auto vh-100">
+				<Col xs="auto" md=6 class="overflow-auto vh-100">
 					<ListGroup flush>
 						{#each keymanderList as keymander, i (keymander.id)}
 							<ListGroupItem
@@ -140,7 +141,7 @@
 						{/each}
 					</ListGroup>
 				</Col>
-				<Col>
+				<Col md=6>
 					{#if selectedKeymander !== undefined}
 						<Container>
 							<Row class="mb-1">
