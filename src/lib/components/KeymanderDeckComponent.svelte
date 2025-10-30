@@ -25,7 +25,7 @@
 		<Col xs="12" md="2" class="align-self-center"
 			><KeymanderComponent keymander={deck.keymander} /></Col
 		>
-		<Col xs="12" md="auto">
+		<Col xs="12" md="auto" class="flex-md-fill">
 			<Container>
 				<Row class="p-2 gap-4">
 					{#each deck.pods
