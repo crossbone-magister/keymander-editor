@@ -105,20 +105,15 @@
 		</Col>
 	</Row>
 	<Row>
-		<Col>
-			<KeymanderDeckComponent
-				deck={$keymanderDeck}
-				editable={true}
-				on:podSelected={removePodFromKeymanderDeck}
-			/>
-		</Col>
-	</Row>
-	<Row>
-		<Col>
-			<PersonalDeckList on:podSelected={addPodToKeymanderDeck} bind:show={showDecks} />
-		</Col>
+		<KeymanderDeckComponent
+			deck={$keymanderDeck}
+			editable={true}
+			on:podSelected={removePodFromKeymanderDeck}
+		/>
 	</Row>
 </Container>
+
+<PersonalDeckList on:podSelected={addPodToKeymanderDeck} bind:show={showDecks} />
 
 <div class="sticky-bottom z-9999">
 	<Toast autohide delay={1500} theme="dark" isOpen={showToast} on:close={() => (showToast = false)}>
