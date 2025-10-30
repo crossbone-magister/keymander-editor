@@ -60,8 +60,8 @@
 </script>
 
 <Container>
-	<Row class="mb-2 justify-content-center">
-		<Col class="me-2">
+	<Row class="mb-2 justify-content-center align-items-center">
+		<Col xs="12" md="auto" class="me-2">
 			<EditableText bind:contents={$keymanderDeck.name}></EditableText>
 		</Col>
 		<Col class="justify-content-end">
