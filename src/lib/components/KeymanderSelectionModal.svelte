@@ -99,6 +99,7 @@
 				<Collapse isOpen={showFilters}>
 					<InputGroup class="p-1" size="sm">
 						<InputGroupText>Search by name/id</InputGroupText>
+						<!-- TODO: input type search -->
 						<Input
 							id="keymander-name-id-search"
 							bsSize="sm"
@@ -107,6 +108,7 @@
 						/>
 						<ResetButton bind:value={searchString} reset={''} />
 						<InputGroupText>Search by version</InputGroupText>
+						<!-- TODO: input type search -->
 						<Input type="select" bind:value={filterVersion}>
 							<option value="all"></option>
 							{#each ['1.1', '2.0'] as version}

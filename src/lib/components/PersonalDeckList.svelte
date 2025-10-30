@@ -139,11 +139,13 @@
 					<Form class="m-1">
 						<InputGroup class="mb-1" size="sm">
 							<InputGroupText>Search by name</InputGroupText>
+							<!-- TODO: input type search -->
 							<Input id="nameFilter" type="text" color="primary" bind:value={nameFilter} />
 							<ResetButton bind:value={nameFilter} reset={''} />
 						</InputGroup>
 						<InputGroup class="mb-1" size="sm">
 							<InputGroupText>Search by house</InputGroupText>
+							<!-- TODO: input type search -->
 							<Input type="select" id="houseFilter" bind:value={houseFilter}>
 								<option value={ALL_VALUE}></option>
 								{#each deckHouses as house (house)}
