@@ -50,8 +50,7 @@
 
 <Container>
 	<Row>
-		<Col md="4" />
-		<Col md="4" xs="auto">
+		<Col sm="12" md={{ size: 4, offset: 4 }}>
 			{#if !$dataLoaded}
 				<Card>
 					<CardHeader><h6>Insert your API Key</h6></CardHeader>
@@ -87,6 +86,5 @@
 				</IconAlert>
 			{/if}
 		</Col>
-		<Col md="4" />
 	</Row>
 </Container>
