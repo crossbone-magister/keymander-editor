@@ -1,1 +1,0 @@
-import{s as n,o as s}from"../chunks/hLCwoimS.js";import{S as e,i as r}from"../chunks/CTwAMGEx.js";import{g as a}from"../chunks/TCMhF4GL.js";function i(o){return s(()=>a("editor")),[]}class c extends e{constructor(t){super(),r(this,t,i,null,n,{})}}export{c as component};
