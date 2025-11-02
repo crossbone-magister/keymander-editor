@@ -13,7 +13,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build",
+		"deploy": "gh-pages -d build -m \"version $(jq -r .version package.json) - $(git rev-parse --short HEAD)\"",
 		"prepare": "husky"
 	},
 	"devDependencies": {
