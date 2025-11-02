@@ -1,0 +1,1 @@
+import{s as n,o as s}from"../chunks/HFPI2v70.js";import{S as e,i as r}from"../chunks/_g6ShLok.js";import{g as a}from"../chunks/NoD80Lx1.js";function i(o){return s(()=>a("editor")),[]}class c extends e{constructor(t){super(),r(this,t,i,null,n,{})}}export{c as component};
