@@ -97,7 +97,7 @@
 		<Container>
 			<Row>
 				<Collapse isOpen={showFilters}>
-					<InputGroup class="p-1" size="sm">
+					<InputGroup size="sm" class="mb-1">
 						<InputGroupText>Search by name/id</InputGroupText>
 						<Input
 							id="keymander-name-id-search"
@@ -105,6 +105,8 @@
 							type="search"
 							bind:value={searchString}
 						/>
+					</InputGroup>
+					<InputGroup size="sm" class="mb-1">
 						<InputGroupText>Search by version</InputGroupText>
 						<Input type="select" bind:value={filterVersion}>
 							<option value="all">All</option>
