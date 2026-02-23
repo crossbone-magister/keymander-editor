@@ -53,6 +53,18 @@
 	let currentPage = 0;
 	let pageSize = 10;
 
+	function formatExpansionName(name: string): string {
+		return name
+			.split('_')
+			.map((word, i) => {
+				if (i > 0 && (word === 'OF' || word === 'THE')) {
+					return word.toLowerCase();
+				}
+				return word.substring(0, 1).concat(word.substring(1).toLowerCase());
+			})
+			.join(' ');
+	}
+
 	const deckLoader: DeckLoaderHelper = new DeckLoaderHelper(decks, $apiKey);
 	deckLoader.onFullyLoaded((value) => {
 		fullyLoaded = value;
@@ -62,7 +74,7 @@
 		new Set($decks.flatMap((deck) => deck.pods).map((pod) => pod.house))
 	).sort();
 	$: deckExpansions = Array.from(
-		new Map($decks.map((deck) => [deck.expansion, Constants.EXPANSIONS_LABELS[deck.expansion]]))
+		new Map($decks.map((deck) => [deck.expansion, formatExpansionName(deck.expansion)]))
 	).sort(([_, a], [__, b]) => a.localeCompare(b));
 	$: decksToShow = $decks
 		.filter((deck: Deck) => deck.name.toLowerCase().includes(nameFilter.toLowerCase()))
@@ -177,7 +189,7 @@
 						{#each decksToShow.slice(currentPage * pageSize, (currentPage + 1) * pageSize) as deck (deck.id)}
 							<tr role="button" on:click={() => showDeck(deck)}>
 								<td>{deck.name}</td>
-								<td>{Constants.EXPANSIONS_LABELS[deck.expansion]}</td>
+								<td>{formatExpansionName(deck.expansion)}</td>
 								<td>
 									{#each deck.pods as pod (pod.house)}
 										<HouseIcon house={pod.house} />
