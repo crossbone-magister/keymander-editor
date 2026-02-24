@@ -43,6 +43,9 @@
 	const isLoading: Toggle = getContext('isLoading');
 	const errorMessage: Writable<Error | undefined> = getContext('errorMessage');
 
+	const LOWERCASE_WORDS = new Set<string>(['OF', 'THE']);
+	const EXPANSION_ID_WORD_SEPARATOR = '_';
+
 	let showFilters = false;
 	let nameFilter = '';
 	let houseFilter = ALL_VALUE;
@@ -55,9 +58,9 @@
 
 	function formatExpansionName(name: string): string {
 		return name
-			.split('_')
+			.split(EXPANSION_ID_WORD_SEPARATOR)
 			.map((word, i) => {
-				if (i > 0 && (word === 'OF' || word === 'THE')) {
+				if (i > 0 && LOWERCASE_WORDS.has(word)) {
 					return word.toLowerCase();
 				}
 				return word.substring(0, 1).concat(word.substring(1).toLowerCase());
