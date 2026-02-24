@@ -227,7 +227,7 @@
 						<PaginationItem>
 							<PaginationLink
 								next
-								on:click={() => (currentPage = Math.min(maxPages, currentPage + 1))}
+								on:click={() => (currentPage = Math.min(maxPages - 1, currentPage + 1))}
 							></PaginationLink>
 						</PaginationItem>
 						<PaginationItem>
