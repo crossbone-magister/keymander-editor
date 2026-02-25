@@ -26,7 +26,7 @@
 	console.log();
 	const cleanName = card.name.toLowerCase().replaceAll(invalidChars, '');
 	const salt = Math.ceil(Math.random() * 1000);
-	const id = `${cleanName}-${salt}`;
+	const id = `_${cleanName}-${salt}`;
 </script>
 
 <span {id} class="text-truncate">
